@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NMJXM2N');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Sonneil Internal Talks | GTM</title>    
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMJXM2N"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron mt-3 w-100 text-center">
+                <h1 class="display-4">Sonneil GTM Examples</h1>
+                <p class="lead">This is a example repo for testing GTM examples</p>
+              </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h2>01 Button Example with id #test-button</h2>
+                <p><a class="btn btn-info" id="example-button-01" href="javascript:void(0); return false;">Test me! I will fire an alert</a></p>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col">
+                <h2>02 Set a global javascript variable to use in GTM</h2>
+                <form id="example-form-02">
+                    <div class="form-group">
+                        <label for="example-form-02-input">Example value</label>
+                        <input type="text" class="form-control" id="example-form-02-input" placeholder="Enter value">
+                        <small id="example-form-02-help" class="form-text text-muted">Set value, and check Datalayer console</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Set value</button>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col">
+                <h2>03 Set a variable inside the datalayer to use in GTM</h2>
+                <form id="example-form-03">
+                    <div class="form-group">
+                        <label for="example-form-03-input">Example value</label>
+                        <input type="text" class="form-control" id="example-form-03-input" placeholder="Enter value">
+                        <small id="example-form-03-help" class="form-text text-muted">Set value, and check Datalayer console</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Set value in DL</button>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col">
+                <h2>04 Fire custom event and track it in GTM</h2>
+                <form id="example-form-04">
+                    <div class="form-group">
+                        <label for="example-form-04-input">Example value</label>
+                        <input type="text" class="form-control" id="example-form-04-input" placeholder="Enter value">
+                        <small id="example-form-04-help" class="form-text text-muted">Set value, and check Datalayer console</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Set value in DL and alert</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script>
+        var globalVariable;
+
+        
+        jQuery(document).ready(function() {
+            console.log('jQuery is ready');
+
+            // Example 2
+            jQuery('#example-form-02').submit(function() {
+                globalVariable = jQuery('#example-form-02-input').val();
+
+                return false;
+            });
+            
+            // Example 3
+            jQuery('#example-form-03').submit(function() {
+                window.dataLayer.push({
+                    'dataLayerVariable': jQuery('#example-form-03-input').val()
+                });
+
+                return false;
+            });
+
+            // Example 4
+            jQuery('#example-form-04').submit(function() {
+                var today = new Date();
+                var date = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate();
+                var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                var dateTime = date + ' ' + time;
+
+                window.dataLayer.push({
+                    'event': 'test-event-04',
+                    'dataLayerVariable': jQuery('#example-form-04-input').val(),
+                });
+
+                return false;
+            });
+        });
+    </script>
+  </body>
+</html>
